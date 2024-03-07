@@ -1,0 +1,34 @@
+[
+  {
+    "id": 79009860250,
+    "session": "sessions//79009860250_telethon",
+    "status": false
+  },
+  {
+    "id": 79954979315,
+    "session": "sessions//79954979315_telethon",
+    "name": "H",
+    "status": false
+  },
+  {
+    "id": 79959122099,
+    "session": "sessions//79959122099_telethon",
+    "name": "Сэт Харам",
+    "status": false
+  },
+  {
+    "id": 2347060589348,
+    "session": "sessions//2347060589348_telethon",
+    "status": false
+  },
+  {
+    "id": 27624738279,
+    "session": "sessions//27624738279_telethon",
+    "status": true
+  },
+  {
+    "id": 27624909117,
+    "session": "sessions//27624909117_telethon",
+    "status": true
+  }
+]
