@@ -1,15 +1,17 @@
 import time, threading, json, random, asyncio
-from telethon import TelegramClient, functions, types
+from telethon import TelegramClient
 import pandas as pd
 
 
 api_id = 28018058
 api_hash = 'c0740a79857a374d7830d10156298c1c'
+missed = []
 
 
 async def sending(session, data):
     # print(session, data)
-    async with TelegramClient(r'sessions//79954979315_telethon', api_id, api_hash) as client:
+    async with TelegramClient(rf"{session}", api_id, api_hash) as client:
+
         count = 0
         count_time = 0
         for i in range(len(data)):
@@ -33,12 +35,14 @@ async def sending(session, data):
                 await client.send_message(user_id, f"Hi, my name is {random.choice(names)}")
                 print(f"success {session} - {user_id}")
                 count_time += 1
+                count += 1
             except Exception as ex:
-                print(f'\nWRONG - {ex} - {session} - {user_id}')
+                with open('missed.txt', 'w') as file:
+
+                    file.write(f"{user_id}\n")
+                print(f'WRONG - {ex} - {session} - {user_id}')
 
             time.sleep(2)
-
-            count += 1
 
 
 def wrapper(session, data):
@@ -66,6 +70,7 @@ def get_targets():
         if i == '':
             df.remove(i)
 
+    # df = df.reverse()
     return df
 
 
@@ -79,5 +84,5 @@ if __name__ == "__main__":
             account_sessions.append(i['session'])
 
     targets = get_targets()
-    # print(targets)
+    print(targets)
     accounts(account_sessions, targets)
